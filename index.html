@@ -1124,157 +1124,78 @@ return;
 
 }
 
-toast("Comprovante enviado para análise.");
+toast("Comprovante recebido.");
 
-}
+const statusBox =
+document.getElementById("statusPagamento");
 
-function toast(msg){
+statusBox.innerHTML = `
 
-const div =
-document.createElement("div");
+<div class="card p-6 mt-6 border border-[#FEF3C7] bg-[#FFFBEB]">
 
-div.className = "toast";
+<div class="flex items-center gap-3">
 
-div.innerHTML = `
-<i class="fa-solid fa-circle-check"></i>
-<span>${msg}</span>
+<div class="spinner"></div>
+
+<div>
+
+<h2 class="text-[20px] font-bold">
+Analisando comprovante
+</h2>
+
+<p class="text-[#64748B] text-[13px] mt-1">
+O sistema está verificando o pagamento enviado
+</p>
+
+</div>
+
+</div>
+
+<div class="progress-line mt-6">
+<div></div>
+</div>
+
+</div>
+
 `;
 
-document.body.appendChild(div);
-
 setTimeout(() => {
 
-div.remove();
+statusBox.innerHTML = `
 
-},3000);
+<div class="card p-6 mt-6 border border-[#FECACA] bg-[#FEF2F2]">
+
+<div class="flex items-center gap-3">
+
+<div class="w-14 h-14 rounded-full bg-[#FECACA] flex items-center justify-center">
+
+<i class="fa-solid fa-xmark text-[#DC2626] text-[24px]"></i>
+
+</div>
+
+<div>
+
+<h2 class="text-[22px] font-bold text-[#DC2626]">
+Pagamento não aprovado
+</h2>
+
+<p class="text-[#64748B] text-[14px] mt-1">
+Não foi possível validar automaticamente o comprovante enviado.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+toast("Comprovante recusado.");
+
+},5000);
 
 }
-
-const ativacoes = [
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 6GB para o número 87****521 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 15GB para o número 84****221 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 26GB para o número 86****903 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 39GB para o número 85****102 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 51GB para o número 87****663 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 80GB para o número 84****918 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 9GB para o número 85****447 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 6GB para o número 86****310 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 15GB para o número 84****774 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 26GB para o número 87****185 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 39GB para o número 85****920 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 25GB + chamadas e SMS ilimitadas para o número 86****771 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 38GB + chamadas e SMS ilimitadas para o número 85****456 válidos por 30 dias."
-},
-
-{
-operadora:"Vodacom",
-cor:"#DC2626",
-mensagem:"Foram enviados 70GB + chamadas e SMS ilimitadas para o número 84****619 válidos por 30 dias."
-},
-
-{
-operadora:"Movitel",
-cor:"#F97316",
-mensagem:"Foram enviados 51GB para o número 87****240 válidos por 30 dias."
-}
-
-];
-
-function mostrarAtivacao(){
-
-const toast =
-document.getElementById("saleToast");
-
-const title =
-document.getElementById("saleTitle");
-
-const random =
-ativacoes[
-Math.floor(
-Math.random() * ativacoes.length
-)
-];
-
-title.innerText =
-random.mensagem;
-
-toast.style.border =
-`2px solid ${random.cor}`;
-
-title.style.color =
-random.cor;
-
-toast.classList.remove("hidden");
-
-setTimeout(() => {
-
-toast.classList.add("hidden");
-
-},4000);
 
 }
 
