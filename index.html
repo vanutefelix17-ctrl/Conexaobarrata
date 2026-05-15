@@ -1115,29 +1115,10 @@ reader.readAsDataURL(file);
 
 function enviarComprovante(){
 
-alert("Botão funcionando");
+const status = document.getElementById("statusPagamento");
 
-}
-
-const file =
-document.getElementById("comprovante").files[0];
-
-if(!file){
-
-toast("Envie o comprovante.");
-
-return;
-
-}
-
-toast("Comprovante recebido.");
-
-const statusBox =
-document.getElementById("statusPagamento");
-
-statusBox.innerHTML = `
-
-<div class="card p-6 mt-6 border border-[#FEF3C7] bg-[#FFFBEB]">
+status.innerHTML = `
+<div class="mt-6 bg-yellow-50 border border-yellow-300 rounded-[18px] p-5">
 
 <div class="flex items-center gap-3">
 
@@ -1145,48 +1126,42 @@ statusBox.innerHTML = `
 
 <div>
 
-<h2 class="text-[20px] font-bold">
+<h2 class="font-bold text-[18px]">
 Analisando comprovante
 </h2>
 
-<p class="text-[#64748B] text-[13px] mt-1">
-O sistema está verificando o pagamento enviado
+<p class="text-[#64748B] text-[14px] mt-1">
+Aguarde enquanto validamos o pagamento
 </p>
 
 </div>
 
 </div>
 
-<div class="progress-line mt-6">
-<div></div>
 </div>
-
-</div>
-
 `;
 
 setTimeout(() => {
 
-statusBox.innerHTML = `
-
-<div class="card p-6 mt-6 border border-[#FECACA] bg-[#FEF2F2]">
+status.innerHTML = `
+<div class="mt-6 bg-red-50 border border-red-300 rounded-[18px] p-5">
 
 <div class="flex items-center gap-3">
 
-<div class="w-14 h-14 rounded-full bg-[#FECACA] flex items-center justify-center">
+<div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
 
-<i class="fa-solid fa-xmark text-[#DC2626] text-[24px]"></i>
+<i class="fa-solid fa-xmark text-red-600 text-[22px]"></i>
 
 </div>
 
 <div>
 
-<h2 class="text-[22px] font-bold text-[#DC2626]">
-Pagamento não aprovado
+<h2 class="font-bold text-[18px] text-red-600">
+Pagamento recusado
 </h2>
 
 <p class="text-[#64748B] text-[14px] mt-1">
-Não foi possível validar automaticamente o comprovante enviado.
+Não foi possível validar automaticamente o comprovante.
 </p>
 
 </div>
@@ -1194,6 +1169,7 @@ Não foi possível validar automaticamente o comprovante enviado.
 </div>
 
 </div>
+`;
 
 toast("Comprovante recusado.");
 
@@ -1206,7 +1182,7 @@ setTimeout(() => {
 mostrarAtivacao();
 
 },3000);
-
+  
 </script>
 
 <!-- ATIVAÇÕES RECENTES -->
