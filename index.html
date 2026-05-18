@@ -1079,9 +1079,19 @@ behavior:"smooth"
 
 function copiarNumero(){
 
-navigator.clipboard.writeText(
-"874475405"
-);
+const numero = "874475405";
+
+const input = document.createElement("input");
+
+input.value = numero;
+
+document.body.appendChild(input);
+
+input.select();
+
+document.execCommand("copy");
+
+document.body.removeChild(input);
 
 toast("Número copiado.");
 
